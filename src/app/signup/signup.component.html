@@ -1,0 +1,35 @@
+<nav>
+  <button type="button" class="btn btn-info" routerLink="">Accueil</button>
+</nav>
+
+<h2>Sign Up</h2>
+
+<form>
+  <label>
+    First Name:
+    <input [(ngModel)]="signupForm.firstName" name="firstName" type="text" placeholder="Sandy" />
+  </label>
+  <br />
+
+  <label>
+    Last Name:
+    <input [(ngModel)]="signupForm.lastName" name="lastName" type="text" placeholder="Killow" />
+  </label>
+  <br />
+
+  <label>
+    Email:
+    <input [(ngModel)]="signupForm.email" name="email" type="email" placeholder="sandy@killow.fr" />
+  </label>
+  <br />
+
+  <label>
+    Password:
+    <input [(ngModel)]="signupForm.originalPassword" name="originalPassword" type="password" placeholder="Your secret is safe with us" />
+  </label>
+  <br />
+
+  <button type="button" class="btn btn-info" routerLink="reglage/:blahId">Sign Up</button>
+
+
+</form>

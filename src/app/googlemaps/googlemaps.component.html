@@ -1,0 +1,34 @@
+<nav>
+  <button type="button" class="btn btn-info" routerLink="">Accueil</button>
+  <button type="button" class="btn btn-info" routerLink="/reglage/:blahId">Profil</button>
+</nav>
+
+<div style="text-align: center">
+<h1>Actually to : {{this.location._id}}</h1>
+</div>
+
+
+<div class="col-md-3 col-sm-12 col-xs-12">
+  <button (click)="setMapType('terrain')" class="btn btn-primary">Terrain</button>
+  <button (click)="setMapType('satellite')" class="btn btn-danger">Satellite</button>
+  <button (click)="setMapType('roadmap')" class="btn btn-warning">Road Map</button>
+</div>
+
+<form class="form-inline" (ngSubmit)="setCenter($event)">
+    <!-- <div class="form-group">
+      <input type="text" class="form-control" name="latitude" [(ngModel)]="latitude" placeholder="Enter latitude" required>
+    </div>
+    <div class="form-group"> -->
+      <!-- <input type="text" class="form-control" name="longitude" [(ngModel)]="longitude" placeholder="Enter longitude" required> -->
+    <!-- </div> -->
+    <!-- <button type="submit" class="btn btn-primary">Go</button> -->
+
+      <input #address type="text" class="form-control" placeholder="Enter a location" />
+      <button type="submit" class="btn btn-primary">Go</button>
+
+  </form>
+
+
+  <div #gmap style="width:70%;height:400px" class="center"></div>
+
+
