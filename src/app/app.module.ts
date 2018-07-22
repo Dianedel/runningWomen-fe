@@ -17,19 +17,21 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 
 const routesArray: Routes = [
   // Home Page
-  { path: "", component: RunComponent },
+  { path: "home-page", component: RunComponent },
   // Profil-reglage privé de l'utilisateur
   { path: "reglage/:blahId", component: ReglageComponent },
   // Page recherche Maps
   { path: "maps", component: GooglemapsComponent },
+  // Page MAPS PERSO
+  { path: "maps/:blahId", component: GooglemapsComponent },
 // Profil public utilisateur
   { path: "profil/:blahId", component: ProfilComponent },
   // mailbox
   { path: "mail/:blahId", component: MessagerieComponent },
   // Signup
   { path: "signup", component: SignupComponent },
-  // Login
-  { path: "login/:blahId", component: LoginComponent },
+  // Login 1ERE PAGE
+  { path: "", component: LoginComponent },
   //forgot password
   { path: "forgot-password", component: ForgotPasswordComponent },
   // All others URLs

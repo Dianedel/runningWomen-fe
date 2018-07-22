@@ -1,3 +1,17 @@
-<h2>Mailbox</h2>
+<nav>
+    <button type="button" class="btn btn-info" routerLink="">Accueil</button>
+</nav>
+
+<h2>Boîte de réception</h2>
+
+<p>Date: {{mailItem.createdAt}}</p>
+<p>De : {{mailItem.sender}}</p>
+<p>A : {{mailItem.receiver}}</p>
+
+<p>{{mailItem.content}}</p>
 
 
+<div>
+    <button>Répondre</button>
+    <button (click)= "deleteClick()">Supprimer le message</button>
+</div>
