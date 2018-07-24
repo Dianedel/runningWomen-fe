@@ -49,6 +49,7 @@ export class AuthService {
     return this.myHttpServ
     .post(
       `${backendUrl}/api/signup`,
+      signupInfo,
       { withCredentials: true } // send cookies across domains
     )
     .toPromise()
@@ -91,6 +92,9 @@ export class LoginSubmission {
 export class SignupSubmission {
   firstName: string;
   lastName: string;
+  birthday: string;
+  location: string;
+  coordinates: Array<number>;
   // pseudo: string;
   email: string;
   originalPassword: string;

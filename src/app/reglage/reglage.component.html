@@ -1,23 +1,25 @@
 <nav>
-  <button type="button" class="btn btn-info" routerLink="">Accueil</button>
-  <button type="button" class="btn btn-info" routerLink="/maps">Carte des coureuses</button>
+  <button type="button" class="btn btn-info" routerLink="/home-page">Accueil</button>
+  <button type="button" class="btn btn-info" routerLink="/map">Carte des coureuses</button>
 </nav>
 
+<div style="text-align: center">
 
-<p>{{this.imageUrl._id}}</p>
-<!-- <img src="{{imageAvatar}}"alt="avatar"/> -->
-<p>Melanie Netendoenmarche{{this.firstName._id}} {{this.lastName._id}}</p>
-<p>30 ans{{this.age._id}}</p>
-<p>Paris, France{{this.location._id}}</p>
-<p>4'30/km{{this.speed._id}}</p>
-<p>Disponible les week-ends{{this.available._id}}</p>
-<p>Flexible sur les horaires: O/N{{this.flexibility._id}}</p>
-<!-- {{this.comments._id}} -->
+  <h1>Mon compte</h1>
 
-<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-        <div class="card-header">Comments / description</div>
-        <div class="card-body">
-         <!-- <h5 class="card-title">Info card title</h5> -->
-          <p class="card-text">I prefer run to forest or parc .........................................................</p>
-        </div>
-      </div>
+<!-- file upload photo -->
+<span *ngIf="myAuthServ.currentUser">
+  <h4>{{myAuthServ.currentUser.firstName}} {{myAuthServ.currentUser.lastName}}</h4>
+  <h4>{{myAuthServ.currentUser.email}}</h4>
+  <h4>{{myAuthServ.currentUser.birthday}}</h4>
+  <h4>{{myAuthServ.currentUser.location}}</h4>
+  <h4>{{myAuthServ.currentUser.speed}} min/km</h4>
+  <h4>{{myAuthServ.currentUser.availability}}</h4>
+  <h4>{{myAuthServ.currentUser.description}}</h4>
+
+
+
+  <button (click)="logoutClick()">Se déconnecter</button>
+</span>
+
+</div>

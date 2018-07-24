@@ -21,10 +21,11 @@ export class LoginComponent implements OnInit {
   loginSubmit() {
     this.myAuthServ.postLogin(this.loginForm)
     .then((response) => {
-      this.myRouterServ.navigateByUrl("/");
+      // redirige vers la page MAP après connexion
+      this.myRouterServ.navigateByUrl("/map");
     })
     .catch((err) => {
-      alert("Sorry! There was a problem with your login. 😥");
+      alert("Il y a un souci avec votre connexion. 😥");
       console.log(err);
     });
   }

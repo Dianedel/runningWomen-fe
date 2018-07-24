@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { } from '@types/googlemaps';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
+import { AuthService } from '../api/auth.service';
+import { Mail, MailService } from '../api/mail.service';
 
 @Component({
   selector: 'app-googlemaps',
   templateUrl: './googlemaps.component.html',
   styleUrls: ['./googlemaps.component.scss'],
-  // template: `<div (click)="redirect()">Redirect</div>`,
-  // providers: [ROUTER_PROVIDERS]
+
 })
 
 export class GooglemapsComponent implements OnInit {
@@ -28,14 +29,15 @@ export class GooglemapsComponent implements OnInit {
     this.map.setMapTypeId(mapTypeId);
   }
 
-  constructor() { }
+  constructor(
+    public myAuthServ: AuthService,
+    private myMailServ: MailService,
+    public myRouterServ: Router,
+  ) { }
 
   ngOnInit(){
 
-    // var coureuses = {
-      //   "Sandra Nicouette":{"lat": 48.827439, "lon": 2.330042},
-      //   "Anne Halliz":{"lat": 48.853183, "lon": 2.369144},
-      // };
+    this.fetchMarkers();
 
       var mapProp = {
         center: new google.maps.LatLng(48.8718722, 2.3176432000000204),
@@ -49,23 +51,90 @@ export class GooglemapsComponent implements OnInit {
 
       this.myAutocomplete.addListener('place_changed',() => {
         var location = this.myAutocomplete.getPlace()
-    this.map.setCenter(location.geometry.location);
+      this.map.setCenter(location.geometry.location);
     // pour envoyer les infos au backend
     // console.log(location)
   });
 
-  var marker = new google.maps.Marker({
-    position: new google.maps.LatLng(48.87167549999999, 2.3109905999999683),
-    title: "Hello Nadia",
-    map: this.map
-  });
+// Marqueur et infobulle
+  // function createMarker(location, locations) {
+  //   var marker = new google.maps.Marker({
+  //     position: {lat: parseFloat(locations[location].lat), lng: parseFloat(locations[location].lon)},
+  //     title: locations[location].nameLocation,
+  //     // "{{user.firstName.lastName}}",
+  //     map: this.map
+  //   });
 
-  google.maps.event.addListener(marker, 'click', function() {
+  //   var popup = new google.maps.InfoWindow({
+  //     content: locations[location].nameLocation,
+  //     // "{{user.firstName.lastName}}",
+  //     // maxWidth: 300,
+  //     // maxHeight: 100,
+  //   });
+  //   google.maps.event.addListener(marker, "click", function() {
+  //     if (currentPopup != null) {
+  //       currentPopup.close();
+  //       currentPopup = null;
+  //     }
+  //     popup.open(this.map, marker);
+  //     currentPopup = popup;
+  //   });
+  //   google.maps.event.addListener(popup, "closeclick", function() {
+  //     currentPopup = null;
+  //   });
+  // }
 
+
+  // var marker = new google.maps.Marker({
+  //   position: new google.maps.LatLng(user.coordinates[1], user.coordinates[0]),
+  //   title: `${user.lastName} ${user.firstName}`,
+  //   map: this.map
+  // });
+
+  // google.maps.event.addListener(marker, 'click', function() {
     // alert("La souris est passée par là... 💕");
-  });
+  // });
 
   }
+
+
+  fetchMarkers() {
+    console.log("hello");
+    this.myMailServ.getMarkers()
+    .then((response : Array<Mail>) => {
+      //this.mailbox = response;
+      console.log(response);
+      response.forEach(mark => {
+        console.log('mark', mark)
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(mark[1], mark[0]),
+          title: `Marker`,
+          map: this.map
+        });
+
+      })
+    })
+    .catch((err) => {
+      alert("il y a un souci")
+      console.log(err);
+    });
+  }
+  // fetchMarker(){
+  //   this.
+  // }
+
+  logoutClick() {
+    this.myAuthServ.logout()
+    .then((response) => {
+      this.myRouterServ.navigateByUrl("");
+    })
+    .catch((err) => {
+      alert("Problème de déconnexion.")
+      console.log(err);
+    })
+  }
+
+
 }
 
 

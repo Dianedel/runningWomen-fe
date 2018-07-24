@@ -1,34 +1,55 @@
 <nav>
-  <button type="button" class="btn btn-info" routerLink="">Accueil</button>
-  <button type="button" class="btn btn-info" routerLink="/reglage/:blahId">Profil</button>
+
+  <span *ngIf="!myAuthServ.currentUser">
+    <button type="button" class="btn btn-info" routerLink="">Accueil</button>
+  </span>
+
+  <span *ngIf="myAuthServ.currentUser">
+  <button type="button" class="btn btn-info" routerLink="/home-page">Accueil</button>
+  <button type="button" class="btn btn-info" routerLink="/reglage">Mon compte</button>
+  <button type="button" class="btn btn-info" routerLink="/mail">Messagerie</button>
+</span>
+
 </nav>
 
-<h4>{{user.firstName._id}} {{user.lastName._id}}</h4>
-
-<div style="text-align: center">
-<h1>Actually to : {{user.location._id}}</h1>
+<div class="username">
+<span *ngIf="myAuthServ.currentUser">
+<h4>{{myAuthServ.currentUser.firstName}} {{myAuthServ.currentUser.lastName}}</h4>
+<button (click)="logoutClick()">Se déconnecter</button>
+</span>
 </div>
 
+<div style="text-align: center">
+    <span *ngIf="myAuthServ.currentUser">
+<h5>Autour de moi</h5>
+<br />
+<h5>{{myAuthServ.currentUser.location}}</h5>
+</span>
+</div>
 
-<div class="col-md-3 col-sm-12 col-xs-12">
+<div class="boutons">
+
+<!-- <div class="col-md-3 col-sm-12 col-xs-12"> -->
   <button (click)="setMapType('terrain')" class="btn btn-primary">Terrain</button>
   <button (click)="setMapType('satellite')" class="btn btn-danger">Satellite</button>
   <button (click)="setMapType('roadmap')" class="btn btn-warning">Road Map</button>
-</div>
+<!-- </div> -->
 
-<form class="form-inline" (ngSubmit)="setCenter($event)">
+  <form class="form-inline" (ngSubmit)="setCenter($event)">
     <!-- <div class="form-group">
       <input type="text" class="form-control" name="latitude" [(ngModel)]="latitude" placeholder="Enter latitude" required>
     </div>
     <div class="form-group"> -->
       <!-- <input type="text" class="form-control" name="longitude" [(ngModel)]="longitude" placeholder="Enter longitude" required> -->
-    <!-- </div> -->
-    <!-- <button type="submit" class="btn btn-primary">Go</button> -->
+      <!-- </div> -->
+      <!-- <button type="submit" class="btn btn-primary">Go</button> -->
 
       <input #address type="text" class="form-control" placeholder="Trouver un lieux" />
       <button type="submit" class="btn btn-primary">Go</button>
 
-  </form>
+    </form>
+
+  </div>
 
 
   <div #gmap style="width:70%;height:400px" class="center"></div>

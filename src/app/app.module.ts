@@ -19,15 +19,13 @@ const routesArray: Routes = [
   // Home Page
   { path: "home-page", component: RunComponent },
   // Profil-reglage privé de l'utilisateur
-  { path: "reglage/:blahId", component: ReglageComponent },
+  { path: "reglage", component: ReglageComponent },
   // Page recherche Maps
-  { path: "maps", component: GooglemapsComponent },
-  // Page MAPS PERSO
-  { path: "maps/:blahId", component: GooglemapsComponent },
+  { path: "map", component: GooglemapsComponent },
 // Profil public utilisateur
-  { path: "profil/:blahId", component: ProfilComponent },
+  { path: "profil", component: ProfilComponent },
   // mailbox
-  { path: "mail/:blahId", component: MessagerieComponent },
+  { path: "mail", component: MessagerieComponent },
   // Signup
   { path: "signup", component: SignupComponent },
   // Login 1ERE PAGE

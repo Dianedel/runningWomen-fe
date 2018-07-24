@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Mail, MailService } from '../api/mail.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { AuthService } from '../api/auth.service';
 
 @Component({
   selector: 'app-messagerie',
@@ -8,27 +9,22 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./messagerie.component.scss']
 })
 export class MessagerieComponent implements OnInit {
-  id: string;
-  mailItem: Mail;
+  mailbox: Array<Mail>;
 
   constructor(
-    private myActivatedRouteServ: ActivatedRoute,
+    public myAuthServ: AuthService,
     private myMailServ: MailService,
     private myRouterServ: Router,
   ) { }
 
   ngOnInit() {
-    this.myActivatedRouteServ.paramMap
-    .subscribe((myParams) => {
-      this.id = myParams.get("mailId");
-      this.fetchMessagerieDetails();
-    });
+    this.fetchMessagerieDetails();
   }
 
   fetchMessagerieDetails() {
-    this.myMailServ.getMail(this.id)
-    .then((response : Mail) => {
-      this.mailItem = response;
+    this.myMailServ.getMail()
+    .then((response : Array<Mail>) => {
+      this.mailbox = response;
     })
     .catch((err) => {
       alert("il y a un souci")
@@ -37,7 +33,6 @@ export class MessagerieComponent implements OnInit {
   }
 
   deleteClick() {
-    const { content } = this.mailItem;
     const isOkay = confirm("Supprimer ce mail ?");
 
     if (isOkay) {

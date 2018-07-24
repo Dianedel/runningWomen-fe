@@ -2,34 +2,89 @@
   <button type="button" class="btn btn-info" routerLink="">Accueil</button>
 </nav>
 
-<h2>Sign Up</h2>
+<div style="text-align: center">
 
-<form>
+<h2>S'inscrire</h2>
+
+<form name="myForm" (ngSubmit)="signupSubmit()">
+<div class="signup">
   <label>
-    First Name:
+    Prénom:
     <input [(ngModel)]="signupForm.firstName" name="firstName" type="text" placeholder="Sandy" />
   </label>
   <br />
 
   <label>
-    Last Name:
+    Nom:
     <input [(ngModel)]="signupForm.lastName" name="lastName" type="text" placeholder="Killow" />
   </label>
   <br />
 
   <label>
-    Email:
-    <input [(ngModel)]="signupForm.email" name="email" type="email" placeholder="sandy@killow.fr" />
+    Date de naissance :
+    <input [(ngModel)]="signupForm.birthday" name="birthday" type="date"/>
   </label>
   <br />
 
-  <label>
-    Password:
-    <input [(ngModel)]="signupForm.originalPassword" name="originalPassword" type="password" placeholder="Your secret is safe with us" />
+  <label>Adresse :</label>
+    <input #address id="user_input_autocomplete_address" name="location" placeholder="Votre adresse.." type="object"/>
+
+    <br />
+
+    <label>
+      E-mail :
+      <input [(ngModel)]="signupForm.email" name="email" type="email" placeholder="sandy@killow.fr" />
+    </label>
+    <br />
+
+    <label>
+      Mot de passe :
+      <input [(ngModel)]="signupForm.originalPassword" name="originalPassword" type="password" placeholder="***********" />
+    </label>
+    <br />
+  </div>
+  <!-- <label>
+    Répeter le mot de passe:
+    <input [(ngModel)]="signupForm.originalPassword" name="originalPassword-repeat" type="password" placeholder="***********" />
   </label>
-  <br />
+  <br /> -->
 
-  <button type="button" class="btn btn-info" routerLink="reglage/:blahId">Sign Up</button>
 
+  <input type="submit" value="Envoyer"/>
+  <button type="button">Annuler</button>
 
 </form>
+</div>
+
+<!-- <script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDFJQZHho-k-UdZI33aatDHib0j4vpOgWI">
+function initializeAutocomplete(id) {
+  var element = document.getElementById(id);
+  if (element) {
+    var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
+    google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+  }
+}
+
+initializeAutocomplete("user_input_autocomplete_address")
+
+function onPlaceChanged() {
+  var place = this.getPlace();
+
+  // console.log(place);  // Uncomment this line to view the full object returned by Google API.
+
+  for (var i in place.address_components) {
+    var component = place.address_components[i];
+    for (var j in component.types) {  // Some types are ["country", "political"]
+      var type_element = document.getElementById(component.types[j]);
+      if (type_element) {
+        type_element.value = component.long_name;
+      }
+    }
+  }
+}
+
+google.maps.event.addDomListener(window, 'load', function() {
+  initializeAutocomplete('user_input_autocomplete_address');
+});
+</script> -->

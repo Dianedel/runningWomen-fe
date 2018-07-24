@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { User } from './auth.service';
 
 const backendUrl = "http://localhost:3000";
 
@@ -12,21 +13,30 @@ export class MailService {
     private myHttpServ: HttpClient
   ) { }
 
-  // GET /api/mail/:id
-getMail(id) {
+  // GET /api/mail
+getMail() {
   return this.myHttpServ
   .get(
-    `${backendUrl}/api/mail/${id}`,
+    `${backendUrl}/api/mailbox`,
     {withCredentials: true } //send cookies across domains
   )
   .toPromise();
 }
+  // GET /api/markers
+  getMarkers() {
+    return this.myHttpServ
+    .get(
+      `${backendUrl}/api/markers`,
+      {withCredentials: true } //send cookies across domains
+    )
+    .toPromise();
+  }
 
 //DELETE /api/mail/:id
 deleteMail(id) {
   return this.myHttpServ
   .delete(
-    `${backendUrl}/api/mail/${id}`,
+    `${backendUrl}/api/mailbox/${id}`,
     { withCredentials : true } // send cookies across domains
   )
   .toPromise();
@@ -36,7 +46,7 @@ deleteMail(id) {
 postMail(mailInfo : MailSubmission) {
   return this.myHttpServ
   .post(
-    `${backendUrl}/api/mail/:id`,
+    `${backendUrl}/api/mailbox`,
     mailInfo,
     { withCredentials: true } //send cookies across domains
   )
@@ -46,8 +56,8 @@ postMail(mailInfo : MailSubmission) {
 
 export class Mail {  //class mail ou Mailbox?
   _id: string;
-  sender: string;
-  receiver: string;
+  sender: User;
+  receiver: User;
   content: string;
   createdAt: string;
   updatedAt: string;

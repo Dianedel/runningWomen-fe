@@ -1,14 +1,16 @@
 <nav>
-    <button type="button" class="btn btn-info" routerLink="">Accueil</button>
+    <button type="button" class="btn btn-info" routerLink="/home-page">Accueil</button>
 </nav>
 
 <h2>Boîte de réception</h2>
 
-<p>Date: {{mailItem.createdAt}}</p>
-<p>De : {{mailItem.sender}}</p>
-<p>A : {{mailItem.receiver}}</p>
-
-<p>{{mailItem.content}}</p>
+<ul>
+    <li *ngFor="let oneMail of mailbox">
+        <p>De : {{oneMail.sender.firstName}}</p>
+        <p>A : {{oneMail.receiver.firstName}}</p>
+        <p>{{oneMail.content}}</p>
+    </li>
+</ul>
 
 
 <div>
