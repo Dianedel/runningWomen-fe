@@ -62,7 +62,6 @@ const routesArray: Routes = [
     RouterModule.forRoot(routesArray)
   ],
   providers: [],
-  bootstrap: [AppComponent]
 })
 export class AppModule {
 

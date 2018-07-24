@@ -36,7 +36,7 @@ export class MessagerieComponent implements OnInit {
     const isOkay = confirm("Supprimer ce mail ?");
 
     if (isOkay) {
-      this.myMailServ.deleteMail(this.id)
+      this.myMailServ.deleteMail(this) //this.id
       .then(() => {
         this.myRouterServ.navigateByUrl("/mails/:id");
       })
