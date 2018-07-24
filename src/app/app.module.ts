@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { RunComponent } from './run/run.component';
@@ -14,6 +15,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { NotfoundpageComponent } from './notfoundpage/notfoundpage.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AddPhotoComponent } from './add-photo/add-photo.component';
 
 const routesArray: Routes = [
   // Home Page
@@ -24,6 +26,8 @@ const routesArray: Routes = [
   { path: "map", component: GooglemapsComponent },
 // Profil public utilisateur
   { path: "profil", component: ProfilComponent },
+  // upload photo
+  { path: "add", component: AddPhotoComponent },
   // mailbox
   { path: "mail", component: MessagerieComponent },
   // Signup
@@ -48,6 +52,8 @@ const routesArray: Routes = [
     NotfoundpageComponent,
     MessagerieComponent,
     ForgotPasswordComponent,
+    FileSelectDirective,
+    AddPhotoComponent,
   ],
   imports: [
     BrowserModule,

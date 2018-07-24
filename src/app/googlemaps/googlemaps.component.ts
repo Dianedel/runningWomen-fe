@@ -4,6 +4,7 @@ import { } from '@types/googlemaps';
 import { RouterLink, Router } from '@angular/router';
 import { AuthService } from '../api/auth.service';
 import { Mail, MailService } from '../api/mail.service';
+import { MarkersService, Marker } from '../api/markers.service';
 
 @Component({
   selector: 'app-googlemaps',
@@ -33,6 +34,7 @@ export class GooglemapsComponent implements OnInit {
     public myAuthServ: AuthService,
     private myMailServ: MailService,
     public myRouterServ: Router,
+    public myMarkerServ: MarkersService,
   ) { }
 
   ngOnInit(){
@@ -100,8 +102,8 @@ export class GooglemapsComponent implements OnInit {
 
   fetchMarkers() {
     console.log("hello");
-    this.myMailServ.getMarkers()
-    .then((response : Array<Mail>) => {
+    this.myMarkerServ.getMarkers()
+    .then((response : Array<Marker>) => {
       //this.mailbox = response;
       console.log(response);
       response.forEach(mark => {

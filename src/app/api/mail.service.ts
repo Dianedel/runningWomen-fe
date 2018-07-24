@@ -18,19 +18,19 @@ getMail() {
   return this.myHttpServ
   .get(
     `${backendUrl}/api/mailbox`,
-    {withCredentials: true } //send cookies across domains
+    { withCredentials: true } //send cookies across domains
   )
   .toPromise();
 }
   // GET /api/markers
-  getMarkers() {
-    return this.myHttpServ
-    .get(
-      `${backendUrl}/api/markers`,
-      {withCredentials: true } //send cookies across domains
-    )
-    .toPromise();
-  }
+  // getMarkers() {
+  //   return this.myHttpServ
+  //   .get(
+  //     `${backendUrl}/api/markers`,
+  //     {withCredentials: true } //send cookies across domains
+  //   )
+  //   .toPromise();
+  // }
 
 //DELETE /api/mail/:id
 deleteMail(id) {
