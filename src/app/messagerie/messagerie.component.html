@@ -1,19 +1,38 @@
 <nav>
-    <button type="button" class="btn btn-info" routerLink="/home-page">Accueil</button>
+    <!-- <div class="left-bar"> -->
+    <img src="../assets/img/img-loren.svg" alt="mon compte" input type="button" routerLink="/reglage" class="moncompte" />
+<!-- </div> -->
+<div class="main-bar">
+    <p>Bonjour {{myAuthServ.currentUser.firstName}}</p>
+    <a type="button" (click)="logoutClick()">Se déconnecter</a>
+</div>
+<div class="right-bar">
+    <img src="../assets/img/search-2.svg" alt="search" input type="button" routerLink="/map" class="iconsearch" />
+    <img src="../assets/img/email-2.svg" alt="mail" input type="button" routerLink="/mail" class="iconmail" />
+</div>
 </nav>
 
-<h2>Boîte de réception</h2>
+<div class="milieu">
 
-<ul>
-    <li *ngFor="let oneMail of mailbox">
-        <p>De : {{oneMail.sender.firstName}}</p>
-        <p>A : {{oneMail.receiver.firstName}}</p>
-        <p>{{oneMail.content}}</p>
-    </li>
-</ul>
+    <h2>MA MESSAGERIE</h2>
 
+    <div class="mail">
+        <ul>
+            <li *ngFor="let oneMail of mailbox">
+                <p>De : {{oneMail.sender.firstName}}</p>
+                <p>A : {{oneMail.receiver.firstName}}</p>
+                <p>{{oneMail.content}}</p>
+            </li>
+        </ul>
+    </div>
 
-<div>
-    <button>Répondre</button>
-    <button (click)= "deleteClick()">Supprimer le message</button>
+    <div class="boutons">
+        <input class="repondre" value="Répondre"/>
+        <input class="delete" (click)="deleteClick()" value="Supprimer"/>
+    </div>
+
 </div>
+
+<footer>
+    <p class="fin">Made with ENERGY @ Ironhack Paris</p>
+</footer>

@@ -1,3 +1,94 @@
-.mail {
+nav {
+    background-color: #ff6670;
+    color: #fafafa;
+    text-align: start;
+    padding-left: 1%;
+    margin: 0;
+    font-weight: bold;
+    height: 70px;
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+    clear: both;
+  }
+
+// .left-bar{
+//     float: left;
+//     height: 390px;
+//     padding-top: 10px;
+//     width: 20%;
+// }
+
+.main-bar{
+    float: left;
+    // height: 590px;
+    // padding-top: 10px;
+    //  margin: 0 1%;
+     width: 48%;
+
+}
+
+.right-bar{
+    float: left;
+    height: 390px;
+    padding-top: 10px;
+    width: 30%;
+}
+
+  .milieu {
+    height: 482px;
+    background-color: #fafafa;
+}
+
+h2{
+    color: #ff6670;
+    margin-left: 85px;
+    margin-top: 45px;
+}
+
+.mail{
+    width: 700px;
+    height: auto;
+    border-radius: 24px;
+    border: solid 1px #3DC7CC;
+    margin-left: 70px;
+}
+
+.boutons{
+    margin-left: 81px;
+    margin-top: 15px;
+}
+
+.repondre{
     text-align: center;
+    border-radius: 20px;
+    color: #FAFAFA;
+    background-color: #FF6670;
+    border-color: #FAFAFA;
+    border-top-width: thin;
+    border-right-width: thin;
+    border-bottom-width: thin;
+    border-left-width: thin;
+    border: solid 1px #FAFAFA;
+    height: 35px;
+    width: 129px;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+
+.delete{
+    text-align: center;
+    border-radius: 20px;
+    color: #FAFAFA;
+    background-color: #9B9B9B;
+    border-color: #FAFAFA;
+    border-top-width: thin;
+    border-right-width: thin;
+    border-bottom-width: thin;
+    border-left-width: thin;
+    border: solid 1px #FAFAFA;
+    height: 35px;
+    width: 129px;
+    margin-right: 2%;
+    margin-top: 2%;
 }

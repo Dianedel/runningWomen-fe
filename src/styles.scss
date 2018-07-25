@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body{
     font-family: Cabin;
-    font-size: 20px;
+    // font-size: 20px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
@@ -14,12 +14,17 @@ body{
 }
 
 footer{
-    text-align: center;
     justify-content: center;
+    text-align: center;
     background-color: #FF6670;
     color: white;
     clear: both;
-    height: 34px;
-    padding-top: 20px;
+    height: 30px;
+    padding-top: 0px;
     margin: 0px;
+}
+
+.fin{
+    display: flex;
+    justify-content: center;
 }

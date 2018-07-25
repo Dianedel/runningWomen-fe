@@ -1,20 +1,108 @@
-.center{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+nav {
+  background-color: #ff6670;
+  color: #fafafa;
+  text-align: start;
+  padding-left: 3%;
+  margin: 0;
+  font-weight: bold;
+  height: 70px;
+  flex-direction: row;
+  justify-content: space-between;
+  display: flex;
+  clear: both;
 }
 
-.username{
-    text-align: end;
-    padding-right: 7%;
+
+.one{
+  float: left;
+  // height: 590px;
+  // padding-top: 10px;
+  //  margin: 0 1%;
+   width: 48%;
 }
 
-.boutons{
-
+.two{
+  float: left;
+  height: 390px;
+  padding-top: 10px;
+  width: 30%;
 }
 
-.style{
-    margin-right: 10%;
+.icon {
+  color: #fafafa;
+  border-color: #fafafa;
 }
 
-// flex-flow: row-reverse nowrap
+.milieu {
+  height: 512px;
+  text-align: center;
+}
+
+.logo {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+
+.autour {
+  font-family: Cabin;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #03123b;
+  margin-top: 7px;
+  margin-bottom: 0px;
+}
+
+.lieu {
+  font-family: Cabin;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: gras;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #03123b;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+}
+
+.form-control {
+  width: 280px;
+  height: 30px;
+  border-radius: 20px;
+  color: #ff6670;
+  border: solid 1px #ff6670;
+  margin-right: 2%;
+  margin-top: 1%;
+}
+
+input::placeholder {
+  color: #9b9b9b;
+}
+
+.go {
+  border-radius: 20px;
+  color: #fafafa;
+  background-color: #ff6670;
+  border-color: #fafafa;
+  border-top-width: thin;
+  border-right-width: thin;
+  border-bottom-width: thin;
+  border-left-width: thin;
+  border: solid 1px #fafafa;
+  height: 35px;
+  width: 129px;
+  margin-right: 2%;
+  margin-top: 1%;
+}

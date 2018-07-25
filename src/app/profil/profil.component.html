@@ -1,16 +1,54 @@
-<button type="button" class="btn btn-info" routerLink="/home-page">Accueil</button>
+<nav>
+  <img src="../assets/img/img-loren.svg" alt="mon compte" input type="button" routerLink="/reglage" class="moncompte" />
+  <div class="one">
+    <p>Bonjour {{myAuthServ.currentUser.firstName}}</p>
+    <a type="button" (click)="logoutClick()">Se déconnecter</a>
+  </div>
+  <div class="two">
+    <img src="../assets/img/search-2.svg" alt="search" input type="button" routerLink="/map" class="iconsearch" />
+    <img src="../assets/img/email-2.svg" alt="mail" input type="button" routerLink="/mail" class="iconmail" />
+  </div>
+</nav>
 
-<h2>Profil User</h2>
+<div class="milieu">
 
-<p>{{this.imageUrl._id}}</p>
-<img src="/running-women-frontend/img/myAvatar1.png" alt="avatar" class="rounded-circle">
-<p>Melanie Netendoenmarche{{this.firstName._id}} {{this.lastName._id}}</p>
-<p>30 ans{{this.age._id}}</p>
-<p>Paris, France{{this.location._id}}</p>
-<p>4'30/km{{this.speed._id}}</p>
-<p>Disponible les week-ends{{this.available._id}}</p>
-<p>Flexible sur les horaires: O/N{{this.flexibility._id}}</p>
-<p>Commentaires / description : 💬{{this.comments._id}}</p>
+  <div class="left-bar">
+    <!-- {{this.imageUrl._id}} -->
+    <img src="../assets/img/img-jenny.svg" alt="photo" />
+    <p class="name">{{this.firstName._id}} {{this.lastName._id}}</p>
+    <p class="ageVille">{{this.birthday._id}} ans, {{this.location._id}}</p>
+  </div>
 
-<button type="button" class="btn btn-info" routerLink="mail/:blahId">Envoyer une demande</button>
-<button type="button" class="btn btn-info" routerLink="mail/:blahId">Envoyer un message</button>
+  <div class="right-bar">
+    <span *ngIf="myAuthServ.currentUser">
+      <div class="item0">
+        <p>{{this.comments._id}}</p>
+      </div>
+      <div class="item1">
+        <img src="../assets/img/timer-full-2.svg" alt="chrono" />
+        <p>{{this.speed._id}} min/km</p>
+      </div>
+      <div class="item2">
+        <img src="../assets/img/ic_directions_run_48px.svg" height="50px" width="24px" alt="run" />
+        <p>{{this.description._id}}</p>
+      </div>
+      <div class="item3">
+        <img src="../assets/img/calendar-2.svg" alt="planning" />
+        <p>{{this.availability._id}}</p>
+      </div>
+      <div class="item4">
+        <img src="../assets/img/watch-2.svg" alt="flexibility" />
+        <p>{{this.flexibility._id}}</p>
+      </div>
+      <div class="item5">
+        <input type="submit" class="send" routerLink="mail/:blahId" value="Envoyer un message" />
+      </div>
+    </span>
+  </div>
+
+
+</div>
+
+<footer>
+  <p class="fin">Made with ENERGY @ Ironhack Paris</p>
+</footer>

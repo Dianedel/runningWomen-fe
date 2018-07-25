@@ -13,14 +13,15 @@ nav {
 }
 
 .close {
-  width: 25px;
-  height: 25px;
-  object-fit: contain;
+  width: 30px;
+  height: 65px;
+  margin-right: 60px;
+  //   object-fit: contain;
 }
 
 .sinscrire {
   text-align: center;
-  margin: 15px;
+  margin: 10px;
   font-family: Cabin;
   font-size: 50px;
   font-weight: bold;
@@ -46,7 +47,7 @@ nav {
 
 .milieu {
   text-align: center;
-  height: 495px;
+  height: 510px;
   background-color: #fafafa;
 }
 
@@ -65,20 +66,15 @@ nav {
   color: #fafafa;
   background-color: #ff6670;
   border-color: #fafafa;
-  border-top-width: thin;
-  border-right-width: thin;
-  border-bottom-width: thin;
-  border-left-width: thin;
   border: solid 1px #fafafa;
   width: 370px;
   height: 35px;
-  margin-right: 2%;
-  margin-top: 2%;
+  margin-top: 20px;
 }
 
 .ret {
-  //   width: 225px;
-  //   height: 19px;
+  margin-top: 37px;
+  text-decoration: underline;
   font-family: Cabin;
   font-size: 16px;
   font-weight: normal;

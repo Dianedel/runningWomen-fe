@@ -1,57 +1,50 @@
 <nav>
-
-  <span *ngIf="!myAuthServ.currentUser">
-    <button type="button" class="btn btn-info" routerLink="">Accueil</button>
-  </span>
-
-  <span *ngIf="myAuthServ.currentUser">
-  <button type="button" class="btn btn-info" routerLink="/home-page">Accueil</button>
-  <button type="button" class="btn btn-info" routerLink="/reglage">Mon compte</button>
-  <button type="button" class="btn btn-info" routerLink="/mail">Messagerie</button>
-</span>
-
+  <img src="../assets/img/img-loren.svg" alt="mon compte" input type="button" routerLink="/reglage" class="moncompte" />
+  <div class="one">
+  <p>Bonjour {{myAuthServ.currentUser.firstName}}</p>
+  <a type="button" (click)="logoutClick()">Se déconnecter</a>
+</div>
+<div class="two">
+  <!-- <img src="../assets/img/search-2.svg" alt="search" input type="button" routerLink="#" class="iconsearch" /> -->
+  <img src="../assets/img/email-2.svg" alt="mail" input type="button" routerLink="/mail" class="iconmail" />
+</div>
 </nav>
 
-<div class="username">
-<span *ngIf="myAuthServ.currentUser">
-<h4>{{myAuthServ.currentUser.firstName}} {{myAuthServ.currentUser.lastName}}</h4>
-<button (click)="logoutClick()">Se déconnecter</button>
-</span>
-</div>
-
-<div style="text-align: center">
-    <span *ngIf="myAuthServ.currentUser">
-<h5>Autour de moi</h5>
-<br />
-<h5>{{myAuthServ.currentUser.location}}</h5>
-</span>
-</div>
-
-<div class="boutons">
-
-<!-- <div class="col-md-3 col-sm-12 col-xs-12"> -->
-  <button (click)="setMapType('terrain')" class="btn btn-primary">Terrain</button>
-  <button (click)="setMapType('satellite')" class="btn btn-danger">Satellite</button>
-  <button (click)="setMapType('roadmap')" class="btn btn-warning">Road Map</button>
-<!-- </div> -->
-
-  <form class="form-inline" (ngSubmit)="setCenter($event)">
-    <!-- <div class="form-group">
-      <input type="text" class="form-control" name="latitude" [(ngModel)]="latitude" placeholder="Enter latitude" required>
-    </div>
-    <div class="form-group"> -->
-      <!-- <input type="text" class="form-control" name="longitude" [(ngModel)]="longitude" placeholder="Enter longitude" required> -->
-      <!-- </div> -->
-      <!-- <button type="submit" class="btn btn-primary">Go</button> -->
-
-      <input #address type="text" class="form-control" placeholder="Trouver un lieux" />
-      <button type="submit" class="btn btn-primary">Go</button>
-
-    </form>
-
+<div class="milieu">
+  <div class="logo">
+    <img src="../assets/img/logo-pink.svg" alt="logo" />
   </div>
 
+  <p class="autour">Autour de moi</p>
 
-  <div #gmap style="width:70%;height:400px" class="center"></div>
+  <p class="lieu">{{myAuthServ.currentUser.location}}</p>
 
+  <form class="form-inline" (ngSubmit)="setCenter($event)">
+    <div #gmap style="width:70%;height:330px" class="center"></div>
+    <input #address type="text" class="form-control" placeholder="Chercher un autre lieux" />
+    <button type="submit" class="go">Go</button>
+  </form>
+</div>
 
+<footer>
+  <p class="fin">Made with ENERGY @ Ironhack Paris</p>
+</footer>
+
+<!-- Ggle Maps -->
+<!-- <div class="form-group">
+  <input type="text" class="form-control" name="latitude" [(ngModel)]="latitude" placeholder="Enter latitude" required>
+</div>
+<div class="form-group"> -->
+<!-- <input type="text" class="form-control" name="longitude" [(ngModel)]="longitude" placeholder="Enter longitude" required> -->
+<!-- </div> -->
+<!-- <button type="submit" class="btn btn-primary">Go</button> -->
+<!-- <button (click)="setMapType('terrain')">Terrain</button>
+  <button (click)="setMapType('satellite')">Satellite</button>
+      <!-- <span *ngIf="!myAuthServ.currentUser">
+        <button type="button" routerLink="">Accueil</button>
+      </span> -->
+<!-- <span *ngIf="myAuthServ.currentUser"> -->
+<!-- </span> -->
+<!-- <button type="button" routerLink="/home-page">Accueil</button> -->
+<!-- <img src="../assets/img/home-1.svg" alt="home" input type="button" routerLink="" class="icon" /> -->
+<!-- <button (click)="setMapType('roadmap')">Road Map</button> -->
