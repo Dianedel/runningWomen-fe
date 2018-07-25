@@ -1,15 +1,137 @@
 body{
-    margin: 15px;
+    font-family: Cabin;
 }
 
-button {
-    margin: 9px;
-    padding: 0;
+nav{
+    background-color: #FF6670;
+    color: #FAFAFA;
+    text-align: start;
+    padding-left: 3%;
+    margin: 0;
+    font-weight: bold;
+    height: 70px;
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+    clear: both;
 }
 
-.login{
-    text-align: end;
-    padding-right: 35%;
-    padding-top: 10px;
+.champ{
+    width: 280px;
+    height: 30px;
+    border-radius: 20px;
+    color: #FF6670;
+    border: solid 1px #FF6670;
+    margin-right: 2%;
+    margin-top: 2%;
 }
 
+input::placeholder{
+    color: #9B9B9B;
+}
+
+.remember{
+    color: #9B9B9B;
+    font-size: 10px;
+}
+
+.connect{
+    border-radius: 20px;
+    color: #FAFAFA;
+    background-color: #FF6670;
+    border-color: #FAFAFA;
+    border-top-width: thin;
+    border-right-width: thin;
+    border-bottom-width: thin;
+    border-left-width: thin;
+    border: solid 1px #FAFAFA;
+    height: 30px;
+    width: 129px;
+    margin-right: 2%;
+    margin-top: 20px;
+}
+
+.go{
+    border-radius: 20px;
+    color: #FAFAFA;
+    background-color: #FF6670;
+    border-color: #FAFAFA;
+    border-top-width: thin;
+    border-right-width: thin;
+    border-bottom-width: thin;
+    border-left-width: thin;
+    border: solid 1px #FAFAFA;
+    height: 35px;
+    width: 129px;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+
+.inscristoi{
+    border-radius: 20px;
+    color: #FAFAFA;
+    background-color: #3DC7CC;
+    border-color: #3DC7CC;
+    border-top-width: thin;
+    border-right-width: thin;
+    border-bottom-width: thin;
+    border-left-width: thin;
+    border: solid 1px #FAFAFA;
+    height: 35px;
+    width: 129px;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+
+.milieu{
+    height: 519px;
+}
+
+.left-bar{
+    float: left;
+    height: 465px;
+    width: 590px;
+    margin-left: 11%;
+    margin-top: 2%;
+}
+
+.left-bar h2{
+    font-size:40px;
+    height: 45px;
+    width: 480px;
+    margin-bottom: 0;
+}
+
+.copine{
+    color: #3DC7CC;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 20px
+}
+
+.nouvelle{
+    color: #3DC7CC;
+    margin-top: 35px;
+    margin-bottom: 0;
+}
+
+.seconnecter{
+    color: #FF6670;
+    margin-bottom: 0;
+    margin-top: 22px;
+}
+
+.right-bar{
+    float: right;
+    margin-top: 4%;
+    margin-right: 11%;
+}
+
+// footer{
+//     text-align: center;
+//     background-color: #FF6670;
+//     color: white;
+//     clear: both;
+//     height: 34px;
+//     padding-top: 20px;
+// }

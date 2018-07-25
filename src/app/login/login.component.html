@@ -1,35 +1,36 @@
-<nav style="text-align: center">
-
-  <h1>Wonder Who Run</h1>
-  <p>Trouver des copines pour courir.</p>
-
-  <a routerLink="/map">
-    <button><img src="../assets/img/wondergirl-thumb.jpg"/></button>
-  </a>
-
-
+<nav>
+  <img src="../assets/img/logo-white.svg" alt="logoWhite"/>
+  <input type="button" class="connect" value="Me connecter" />
 </nav>
 
+<div class="milieu">
 
-<form name="myform" (ngSubmit)="loginSubmit()" novalidate>
-
-  <div class="login">
-    <label>E-mail</label>
-    <input [(ngModel)]="loginForm.email" name="email" type="text" placeholder="sandy@killow.com" required />
-    <br />
-    <label>Mot de passe</label>
-    <input [(ngModel)]="loginForm.loginPassword" name="loginpassword" type="password" placeholder="***" required />
-    <br />
-    <!-- <label>
-      <input type="checkbox" checked="checked" name="remember" style="margin-bottom: 15px">Se souvenir de moi</label>
-    </label> -->
+  <div class="left-bar">
+    <h2 style="color: #FF6670">WONDER WHO RUN</h2>
+    <b><p class="copine">Trouve des copines pour courir.</p></b>
+    <form style="height: 335px;" name="myform" (ngSubmit)="loginSubmit()" novalidate>
+      <b><p class="seconnecter"> Se connecter</p></b>
+      <input [(ngModel)]="loginForm.email" name="email" type="text" class="champ" placeholder="Email" required />
+      <br/>
+      <input [(ngModel)]="loginForm.loginPassword" name="loginpassword" type="password" class="champ" placeholder="Mot de passe" required />
+      <br/>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom: 15px"><a class="remember">Se souvenir de moi</a>
+      <a class="remember" routerLink="/forgot-password">Mot de passe oublié ?</a>
+      <br/>
+      <input type="submit" class="go" value="GO !" />
+      <br/>
+      <p class="nouvelle">Tu es nouvelle sur Whonder Who Run ?</p>
+      <input type="button" class="inscristoi" routerLink="/signup" value="INSCRIS-TOI !"/>
+      <br/>
+    </form>
   </div>
 
-  <div style="text-align: center">
-    <input type="submit" value="Se connecter" />
-    <br/>
-    <a routerLink="/signup">S'inscrire</a>
-    <br />
-    <a routerLink="/forgot-password">Mot de passe oublié ?</a>
+  <div class="right-bar">
+    <img src="../assets/img/img-wonderwoman.svg" alt="Wonder women run" />
   </div>
-</form>
+
+</div>
+
+<footer>
+  <p>Made with ENERGY @ Ironhack Paris</p>
+</footer>

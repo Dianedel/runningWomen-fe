@@ -1,90 +1,40 @@
 <nav>
-  <button type="button" class="btn btn-info" routerLink="">Accueil</button>
+  <img src="../assets/img/logo-white.svg" alt="logoWhite" />
+  <img src="../assets/img/ic_close_24px.svg" alt="close" input type="button" class="close" />
 </nav>
 
-<div style="text-align: center">
+<div class="milieu">
 
-<h2>S'inscrire</h2>
+<div class="sinscrire">S'inscrire</div>
+
+<div class="reserve">Whonder Who Run est un service réservé aux femmes</div>
 
 <form name="myForm" (ngSubmit)="signupSubmit()">
-<div class="signup">
-  <label>
-    Prénom:
-    <input [(ngModel)]="signupForm.firstName" name="firstName" type="text" placeholder="Sandy" />
-  </label>
+  <input [(ngModel)]="signupForm.firstName" name="firstName" type="text" class="signup" placeholder="Prénom" />
   <br />
-
-  <label>
-    Nom:
-    <input [(ngModel)]="signupForm.lastName" name="lastName" type="text" placeholder="Killow" />
-  </label>
+  <input [(ngModel)]="signupForm.lastName" name="lastName" type="text" class="signup" placeholder="Nom" />
   <br />
-
-  <label>
-    Date de naissance :
-    <input [(ngModel)]="signupForm.birthday" name="birthday" type="date"/>
-  </label>
+  <input [(ngModel)]="signupForm.birthday" name="birthday" class="signup" type="date" />
   <br />
-
-  <label>Adresse :</label>
-    <input #address id="user_input_autocomplete_address" name="location" placeholder="Votre adresse.." type="object"/>
-
-    <br />
-
-    <label>
-      E-mail :
-      <input [(ngModel)]="signupForm.email" name="email" type="email" placeholder="sandy@killow.fr" />
-    </label>
-    <br />
-
-    <label>
-      Mot de passe :
-      <input [(ngModel)]="signupForm.originalPassword" name="originalPassword" type="password" placeholder="***********" />
-    </label>
-    <br />
-  </div>
+  <input #address id="user_input_autocomplete_address" name="location" class="signup" placeholder="Votre adresse.." type="object"
+  />
+  <br />
+  <input [(ngModel)]="signupForm.email" name="email" type="email" class="signup" placeholder="email" />
+  <br />
+  <input [(ngModel)]="signupForm.originalPassword" name="originalPassword" type="password" class="signup" placeholder="Mot de passe"
+  />
+  <br />
   <!-- <label>
     Répeter le mot de passe:
     <input [(ngModel)]="signupForm.originalPassword" name="originalPassword-repeat" type="password" placeholder="***********" />
   </label>
   <br /> -->
-
-
-  <input type="submit" value="Envoyer"/>
-  <button type="button">Annuler</button>
-
+  <input type="submit" class="btninscription" value="S'inscrire" />
+  <p class="ret" routerLink="">Revenir à la page d'accueil</p>
 </form>
+
 </div>
 
-<!-- <script type="text/javascript"
-  src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDFJQZHho-k-UdZI33aatDHib0j4vpOgWI">
-function initializeAutocomplete(id) {
-  var element = document.getElementById(id);
-  if (element) {
-    var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
-    google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
-  }
-}
-
-initializeAutocomplete("user_input_autocomplete_address")
-
-function onPlaceChanged() {
-  var place = this.getPlace();
-
-  // console.log(place);  // Uncomment this line to view the full object returned by Google API.
-
-  for (var i in place.address_components) {
-    var component = place.address_components[i];
-    for (var j in component.types) {  // Some types are ["country", "political"]
-      var type_element = document.getElementById(component.types[j]);
-      if (type_element) {
-        type_element.value = component.long_name;
-      }
-    }
-  }
-}
-
-google.maps.event.addDomListener(window, 'load', function() {
-  initializeAutocomplete('user_input_autocomplete_address');
-});
-</script> -->
+<footer>
+  <p>Made with ENERGY @ Ironhack Paris</p>
+</footer>
