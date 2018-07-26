@@ -3,12 +3,12 @@
     <img src="../assets/img/img-loren.svg" alt="mon compte" input type="button" routerLink="/reglage" class="moncompte" />
 <!-- </div> -->
 <div class="main-bar">
-    <p>Bonjour {{myAuthServ.currentUser.firstName}}</p>
+    <p class="bonjour">Bonjour {{myAuthServ.currentUser.firstName}}</p>
     <a type="button" (click)="logoutClick()">Se déconnecter</a>
 </div>
 <div class="right-bar">
     <img src="../assets/img/search-2.svg" alt="search" input type="button" routerLink="/map" class="iconsearch" />
-    <img src="../assets/img/email-2.svg" alt="mail" input type="button" routerLink="/mail" class="iconmail" />
+    <img src="../assets/img/home-1.svg" alt="home" input type="button" routerLink="/reglage" class="iconhome" />
 </div>
 </nav>
 

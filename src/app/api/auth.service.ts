@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+// import { environment } from "../../environments/environment";
+// const { backendUrl } = environment;
+
 const backendUrl = "http://localhost:3000";
 
 @Injectable({
@@ -12,6 +15,17 @@ export class AuthService {
   constructor(
     private myHttpServ: HttpClient
   ) { }
+
+
+  // Get user profil
+getUserItem(id) {
+  return this.myHttpServ
+  .get(
+    `${backendUrl}/api/auth/${id}`,
+    { withCredentials: true }
+  )
+  .toPromise();
+}
 
   // GET /api/checklogin
   check() {
@@ -82,6 +96,7 @@ export class User{
   lastName: string;
   // pseudo: string;
   email: string;
+  coordinates: number[];
 }
 
 export class LoginSubmission {

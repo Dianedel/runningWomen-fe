@@ -1,3 +1,60 @@
-<p>
-  add-photo works!
-</p>
+<nav>
+  <img src="../assets/img/img-loren.svg" alt="mon compte" input type="button" routerLink="/reglage" class="moncompte" />
+  <div class="one">
+    <p class="bonjour">Bonjour {{myAuthServ.currentUser.firstName}}</p>
+    <a type="button" (click)="logoutClick()">Se déconnecter</a>
+  </div>
+  <div class="two">
+    <img src="../assets/img/search-2.svg" alt="search" input type="button" routerLink="/map" class="iconsearch" />
+    <img src="../assets/img/email-2.svg" alt="mail" input type="button" routerLink="/mail" class="iconmail" />
+    <img src="../assets/img/home-1.svg" alt="home" input type="button" routerLink="/reglage" class="iconhome" />
+  </div>
+</nav>
+
+<div class="milieu">
+
+  <div class="titre">
+    <p>Modifier mes informations personnelles</p>
+    <a [routerLink]="['']"></a>
+  </div>
+
+  <form>
+
+    <div class="left-bar">
+      <!-- <div class="photo"> -->
+        <label>Changer / ajouter une photo</label>
+        <br/>
+        <input type="file" class="file" name="file" ng2FileSelect [uploader]="uploader" />
+      <!-- </div> -->
+
+    </div>
+
+    <div class="main-bar">
+      <label>Adresse</label>
+      <label>Vitesse</label>
+      <label>Disponibilités</label>
+      <label>Commentaires</label>
+    </div>
+
+    <div class="right-bar">
+      <input #address id="user_input_autocomplete_address" type="object" [(ngModel)]="newPhoto.location" name="adresse" placeholder="{{myAuthServ.currentUser.location}}"
+      />
+      <input type="text" [(ngModel)]="newPhoto.vitesse" name="vitesse" placeholder="{{myAuthServ.currentUser.speed}} min/km" />
+      <input type="text" [(ngModel)]="newPhoto.availability" name="availability" placeholder="{{myAuthServ.currentUser.availability}}"
+      />
+      <input type="textarea" [(ngModel)]="newPhoto.description" name="description" placeholder="{{myAuthServ.currentUser.description}}"
+      />
+    </div>
+
+
+    <div class="bouton">
+      <button class="modif" (click)="addSpec(spec.value); spec.value = ''"> Modifier </button>
+      <button class="enr" (click)="submit()">Enregistrer</button>
+    </div>
+  </form>
+</div>
+
+
+<footer>
+  <p class="fin">Made with ENERGY @ Ironhack Paris</p>
+</footer>

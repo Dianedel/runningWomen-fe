@@ -27,8 +27,6 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(){
 
-    // var currentPopup = null;
-
       this.myAutocomplete = new google.maps.places.Autocomplete(this.addressElement.nativeElement);
 
       this.myAutocomplete.addListener('place_changed',() => {
@@ -41,6 +39,7 @@ export class SignupComponent implements OnInit {
     // pour envoyer les infos au backend
     // console.log(this.signupForm)
   });
+
   }
 
 submitForm(myForm) {

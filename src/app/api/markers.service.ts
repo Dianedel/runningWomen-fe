@@ -27,4 +27,7 @@ export class MarkersService {
 export class Marker {
   location: string;
   coordinates: Array<number>;
+  _id: string;
+  firstName: string;
+  lastName: string;
 }

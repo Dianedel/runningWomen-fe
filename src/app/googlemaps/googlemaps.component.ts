@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { } from '@types/googlemaps';
 import { RouterLink, Router } from '@angular/router';
-import { AuthService } from '../api/auth.service';
+import { AuthService, User } from '../api/auth.service';
 import { Mail, MailService } from '../api/mail.service';
 import { MarkersService, Marker } from '../api/markers.service';
 
@@ -22,8 +22,7 @@ export class GooglemapsComponent implements OnInit {
   @ViewChild('address') addressElement: any;
 
 
-  setCenter(e:any){
-    e.preventDefault();
+  setCenter(){
     this.map.setCenter(new google.maps.LatLng(this.latitude, this.longitude));
   }
   setMapType(mapTypeId: string) {
@@ -38,6 +37,17 @@ export class GooglemapsComponent implements OnInit {
   ) { }
 
   ngOnInit(){
+    this.myAuthServ.check()
+      .then(() => {
+        const [lng, lat] = this.myAuthServ.currentUser.coordinates;
+        this.latitude = lat;
+        this.longitude = lng;
+        this.setCenter();
+      })
+      .catch(() => {
+        alert("sjflqkdsjfjl")
+      });
+
 
     this.fetchMarkers();
 
@@ -57,6 +67,8 @@ export class GooglemapsComponent implements OnInit {
     // pour envoyer les infos au backend
     // console.log(location)
   });
+  }
+    // this.myAuthServ.currentUser.coordinates = new google.maps.LatLng
 
 // Marqueur et infobulle
   // function createMarker(location, locations) {
@@ -94,26 +106,29 @@ export class GooglemapsComponent implements OnInit {
   // });
 
   // google.maps.event.addListener(marker, 'click', function() {
-    // alert("La souris est passée par là... 💕");
+  //   res.renderrouterLink="/profil";
   // });
 
-  }
+
 
 
   fetchMarkers() {
     console.log("hello");
     this.myMarkerServ.getMarkers()
     .then((response : Array<Marker>) => {
-      //this.mailbox = response;
       console.log(response);
       response.forEach(mark => {
         console.log('mark', mark)
         var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(mark[1], mark[0]),
-          title: `Marker`,
+          position: new google.maps.LatLng(mark.coordinates[1], mark.coordinates[0]),
+          animation: google.maps.Animation.DROP,
+          title: `${mark.firstName} ${mark.lastName}`,
           map: this.map
         });
 
+        marker.addListener("click", () => {
+          this.myRouterServ.navigateByUrl(`/profil/${mark._id}`);
+        });
       })
     })
     .catch((err) => {
@@ -121,9 +136,6 @@ export class GooglemapsComponent implements OnInit {
       console.log(err);
     });
   }
-  // fetchMarker(){
-  //   this.
-  // }
 
   logoutClick() {
     this.myAuthServ.logout()

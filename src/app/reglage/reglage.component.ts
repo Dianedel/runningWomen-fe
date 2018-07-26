@@ -30,6 +30,7 @@ export class ReglageComponent implements OnInit {
         console.log(err);
       })
     }
+
   }
 
 

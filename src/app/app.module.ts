@@ -25,11 +25,12 @@ const routesArray: Routes = [
   // Page recherche Maps
   { path: "map", component: GooglemapsComponent },
 // Profil public utilisateur
-  { path: "profil", component: ProfilComponent },
+  { path: "profil/:id", component: ProfilComponent },
   // upload photo
-  { path: "add", component: AddPhotoComponent },
+  { path: "info", component: AddPhotoComponent },
   // mailbox
   { path: "mail", component: MessagerieComponent },
+  { path: "mail/:id", component: MessagerieComponent },
   // Signup
   { path: "signup", component: SignupComponent },
   // Login 1ERE PAGE

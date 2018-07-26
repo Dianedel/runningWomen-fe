@@ -1,12 +1,13 @@
 <nav>
   <img src="../assets/img/img-loren.svg" alt="mon compte" input type="button" routerLink="/reglage" class="moncompte" />
   <div class="one">
-  <p>Bonjour {{myAuthServ.currentUser.firstName}}</p>
+  <p class="bonjour">Bonjour {{myAuthServ.currentUser?.firstName}}</p>
   <a type="button" (click)="logoutClick()">Se déconnecter</a>
 </div>
 <div class="two">
   <!-- <img src="../assets/img/search-2.svg" alt="search" input type="button" routerLink="#" class="iconsearch" /> -->
   <img src="../assets/img/email-2.svg" alt="mail" input type="button" routerLink="/mail" class="iconmail" />
+  <img src="../assets/img/home-1.svg" alt="home" input type="button" routerLink="/reglage" class="iconhome" />
 </div>
 </nav>
 
@@ -17,9 +18,9 @@
 
   <p class="autour">Autour de moi</p>
 
-  <p class="lieu">{{myAuthServ.currentUser.location}}</p>
+  <p class="lieu">{{myAuthServ.currentUser?.location}}</p>
 
-  <form class="form-inline" (ngSubmit)="setCenter($event)">
+  <form class="form-inline" (ngSubmit)="setCenter()">
     <div #gmap style="width:70%;height:330px" class="center"></div>
     <input #address type="text" class="form-control" placeholder="Chercher un autre lieux" />
     <button type="submit" class="go">Go</button>

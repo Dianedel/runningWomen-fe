@@ -29,20 +29,37 @@ nav {
 }
 
 .right-bar{
+    order: 2;
     float: left;
     height: 390px;
-    padding-top: 10px;
+    padding-top: 20px;
     width: 30%;
 }
+
+.moncompte{
+    width: 105px;
+    padding-left: 160px;
+  }
+
+  .bonjour{
+    margin-top: 14px;
+    margin-bottom: 7px;
+  }
+
+  .iconsearch{
+    margin-right: 30px;
+    padding-left: 80px;
+  }
 
   .milieu {
     height: 482px;
     background-color: #fafafa;
+    padding-left: 205px
 }
 
 h2{
     color: #ff6670;
-    margin-left: 85px;
+    margin-left: 90px;
     margin-top: 45px;
 }
 
@@ -51,12 +68,13 @@ h2{
     height: auto;
     border-radius: 24px;
     border: solid 1px #3DC7CC;
-    margin-left: 70px;
+    margin-left: 90px;
+    margin-top: 35px;
 }
 
 .boutons{
-    margin-left: 81px;
-    margin-top: 15px;
+    margin-left: 515px;
+    margin-top: 25px;
 }
 
 .repondre{

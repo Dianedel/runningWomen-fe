@@ -21,6 +21,18 @@ export class MessagerieComponent implements OnInit {
     this.fetchMessagerieDetails();
   }
 
+
+  logoutClick() {
+    this.myAuthServ.logout()
+    .then((response) => {
+      this.myRouterServ.navigateByUrl("");
+    })
+    .catch((err) => {
+      alert("Problème de déconnexion.")
+      console.log(err);
+    })
+  }
+
   fetchMessagerieDetails() {
     this.myMailServ.getMail()
     .then((response : Array<Mail>) => {
