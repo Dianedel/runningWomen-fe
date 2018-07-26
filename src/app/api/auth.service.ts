@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-// import { environment } from "../../environments/environment";
-// const { backendUrl } = environment;
+import { environment } from "../../environments/environment";
+const { backendUrl } = environment;
 
-const backendUrl = "http://localhost:3000";
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +20,23 @@ export class AuthService {
 getUserItem(id) {
   return this.myHttpServ
   .get(
-    `${backendUrl}/api/auth/${id}`,
+    `${backendUrl}/api/profil/${id}`,
     { withCredentials: true }
   )
   .toPromise();
 }
+
+// update profil (page photo)
+postSubmit(userInfo: UserSubmission){
+  return this.myHttpServ
+  .post(
+    `${backendUrl}/api/info`,
+    userInfo,
+    { withCredentials: true },
+  )
+  .toPromise();
+}
+
 
   // GET /api/checklogin
   check() {
@@ -97,6 +108,11 @@ export class User{
   // pseudo: string;
   email: string;
   coordinates: number[];
+  location: string;
+  birthday: string;
+  speed: number;
+  availability: string;
+  description: string;
 }
 
 export class LoginSubmission {
@@ -113,4 +129,13 @@ export class SignupSubmission {
   // pseudo: string;
   email: string;
   originalPassword: string;
+}
+
+export class UserSubmission {
+  location: string;
+  coordinates: Array<number>;
+  speed: number;
+  availability: string;
+  description: string;
+  // specs: [string];
 }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
-import { FileSelectDirective } from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { RunComponent } from './run/run.component';
@@ -53,14 +53,14 @@ const routesArray: Routes = [
     NotfoundpageComponent,
     MessagerieComponent,
     ForgotPasswordComponent,
-    FileSelectDirective,
     AddPhotoComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routesArray)
+    RouterModule.forRoot(routesArray),
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]

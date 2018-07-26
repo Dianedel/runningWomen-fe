@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { } from '@types/googlemaps';
 import { RouterLink, Router } from '@angular/router';
@@ -32,8 +32,9 @@ export class GooglemapsComponent implements OnInit {
   constructor(
     public myAuthServ: AuthService,
     private myMailServ: MailService,
-    public myRouterServ: Router,
+    private myRouterServ: Router,
     public myMarkerServ: MarkersService,
+    private myZone: NgZone,
   ) { }
 
   ngOnInit(){
@@ -45,7 +46,7 @@ export class GooglemapsComponent implements OnInit {
         this.setCenter();
       })
       .catch(() => {
-        alert("sjflqkdsjfjl")
+        alert("Gmaps n'arrive pas à se centrer sur votre position")
       });
 
 
@@ -127,7 +128,9 @@ export class GooglemapsComponent implements OnInit {
         });
 
         marker.addListener("click", () => {
-          this.myRouterServ.navigateByUrl(`/profil/${mark._id}`);
+          this.myZone.run(() => {
+            this.myRouterServ.navigateByUrl(`/profil/${mark._id}`);
+          });
         });
       })
     })

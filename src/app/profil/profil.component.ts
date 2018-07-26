@@ -20,7 +20,7 @@ export class ProfilComponent implements OnInit {
   ngOnInit() {
     this.myActivatedRouteServ.paramMap
     .subscribe((myParams) => {
-      this.id = myParams.get("userId");
+      this.id = myParams.get("id");
       this.fetchUserProfil();
     });
   }

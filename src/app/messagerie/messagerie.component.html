@@ -16,19 +16,15 @@
 
     <h2>MA MESSAGERIE</h2>
 
-    <div class="mail">
-        <ul>
-            <li *ngFor="let oneMail of mailbox">
-                <p>De : {{oneMail.sender.firstName}}</p>
-                <p>A : {{oneMail.receiver.firstName}}</p>
-                <p>{{oneMail.content}}</p>
-            </li>
-        </ul>
+    <div class="mail" *ngFor="let oneMail of mailbox">
+        <p>De : {{oneMail.sender.firstName}}</p>
+        <p>A : {{oneMail.receiver.firstName}}</p>
+        <p>{{oneMail.content}}</p>
     </div>
 
     <div class="boutons">
-        <input class="repondre" value="Répondre"/>
-        <input class="delete" (click)="deleteClick()" value="Supprimer"/>
+        <button class="repondre" value="Répondre">Répondre</button>
+        <button class="delete" (click)="deleteClick()" value="Supprimer">Supprimer</button>
     </div>
 
 </div>

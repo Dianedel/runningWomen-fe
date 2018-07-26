@@ -12,13 +12,8 @@ import { } from '@types/googlemaps';
 })
 export class SignupComponent implements OnInit {
   signupForm: SignupSubmission = new SignupSubmission();
- // @ViewChild('gmap') gmapElement: any;
-  // map: google.maps.Map;
   myAutocomplete: google.maps.places.Autocomplete;
-  // latitude: number;
-  // longitude: number;
   @ViewChild('address') addressElement: any;
-  //@ViewChild("latitude") adressElement: any;
 
   constructor(
     public myAuthServ: AuthService,

@@ -16,30 +16,30 @@
     <!-- {{this.imageUrl._id}} -->
     <img src="../assets/img/img-jenny.svg" alt="photo" />
 
-    <p class="name">{{userItem?.firstName}} {{this.lastName?._id}}</p>
-    <p class="ageVille">{{userItem?.birthday?._id}} ans, {{this.location?._id}}</p>
+    <p class="name">{{userItem?.firstName}} {{userItem?.lastName}}</p>
+    <p class="ageVille">{{userItem?.birthday}} ans, {{userItem?.location}}</p>
   </div>
 
   <div class="right-bar">
     <span *ngIf="myAuthServ.currentUser">
       <div class="item0">
-        <p>{{this.comments?._id}}</p>
+        <p>{{userItem?.comments}}</p>
       </div>
       <div class="item1">
         <img src="../assets/img/timer-full-2.svg" alt="chrono" />
-        <p>{{this.speed?._id}} min/km</p>
+        <p>{{userItem?.speed}} min/km</p>
       </div>
       <div class="item2">
         <img src="../assets/img/ic_directions_run_48px.svg" height="50px" width="24px" alt="run" />
-        <p>{{this.description?._id}}</p>
+        <p>{{userItem?.description}}</p>
       </div>
       <div class="item3">
         <img src="../assets/img/calendar-2.svg" alt="planning" />
-        <p>{{this.availability?._id}}</p>
+        <p>{{userItem?.availability}}</p>
       </div>
       <div class="item4">
         <img src="../assets/img/watch-2.svg" alt="flexibility" />
-        <p>{{this.flexibility?._id}}</p>
+        <p>{{userItem?.flexibility}}</p>
       </div>
       <div class="item5">
         <input type="submit" class="send" [routerLink]="['/mail', 999 ]" value="Envoyer un message" />

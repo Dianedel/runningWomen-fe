@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
-import { AuthService } from '../api/auth.service';
+import { AuthService, User } from '../api/auth.service';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
+
+const { backendUrl } = environment
 
 @Component({
   selector: 'app-add-photo',
@@ -10,13 +13,13 @@ import { Router } from '@angular/router';
 })
 export class AddPhotoComponent implements OnInit {
   uploader: FileUploader = new FileUploader({
-    url: '/photos'
+    url: `${backendUrl}/api/photos`
   });
 
   newPhoto = {
     email: '',
     location:'',
-    speed: '',
+    speed: 0,
     availability: '',
     description: '',
     // imageUrl: '',
@@ -78,19 +81,27 @@ myAutocomplete: google.maps.places.Autocomplete;
     }
 
     submit() {
-      this.uploader.onBuildItemForm = (item, form) => {
-        form.append('email', this.newPhoto.email);
-        form.append('adresse', JSON.stringify(this.newPhoto.coordinates));
-        form.append('vitesse', this.newPhoto.speed);
-        form.append('disponibilités', this.newPhoto.availability);
-        form.append('commentaire', this.newPhoto.description);
+      // this.uploader.onBuildItemForm = (item, form) => {
+      //   form.append('email', this.newPhoto.email);
+      //   form.append('adresse', JSON.stringify(this.newPhoto.coordinates));
+      //   form.append('vitesse', this.newPhoto.speed);
+      //   form.append('disponibilités', this.newPhoto.availability);
+      //   form.append('commentaire', this.newPhoto.description);
 
-        form.append('specs', JSON.stringify(this.newPhoto.specs));
-      };
+      //   form.append('specs', JSON.stringify(this.newPhoto.specs));
+      // };
 
       this.uploader.uploadAll();
     }
 
-
-
+    updateProfile() {
+      this.myAuthServ.postSubmit(this.newPhoto)
+      .then((response: User) => {
+        this.myRouterServ.navigateByUrl(`/photo/${response._id}`)
+      })
+      .catch((err) => {
+        alert("Erreur d'enregistrement");
+        console.log(err);
+      });
+    }
   }
