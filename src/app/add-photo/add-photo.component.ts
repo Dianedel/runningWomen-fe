@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
-import { AuthService, User } from '../api/auth.service';
-import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
+import { AuthService, User, UserSubmission } from '../api/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
-const { backendUrl } = environment
+import { environment } from '../../environments/environment';
+const { backendUrl } = environment;
 
 @Component({
   selector: 'app-add-photo',
@@ -12,20 +12,21 @@ const { backendUrl } = environment
   styleUrls: ['./add-photo.component.scss']
 })
 export class AddPhotoComponent implements OnInit {
+  newPhoto: UserSubmission = new UserSubmission();
   uploader: FileUploader = new FileUploader({
     url: `${backendUrl}/api/photos`
   });
 
-  newPhoto = {
-    email: '',
-    location:'',
-    speed: 0,
-    availability: '',
-    description: '',
-    // imageUrl: '',
-    coordinates: [],
-    specs: []
-  };
+  // newPhoto = {
+  //   email: '',
+  //   location:'',
+  //   speed: 0,
+  //   availability: '',
+  //   description: '',
+  //   // imageUrl: '',
+  //   coordinates: [],
+  //   // specs: []
+  // };
 
   feedback: string;
 
@@ -34,10 +35,15 @@ myAutocomplete: google.maps.places.Autocomplete;
 
   constructor(
     public myAuthServ: AuthService,
-    public myRouterServ: Router
+    public myRouterServ: Router,
+    private myActivatedRouteServ: ActivatedRoute,
   ) { }
 
   ngOnInit() {
+    this.myAuthServ.check()
+      .then(() => {
+        this.newPhoto = new UserSubmission(this.myAuthServ.currentUser);
+      });
 
     this.uploader.onSuccessItem = (item, response) => {
       this.feedback = JSON.parse(response).message;
@@ -76,12 +82,12 @@ myAutocomplete: google.maps.places.Autocomplete;
   }
 
 // add photo
-    addSpec(spec) {
-      this.newPhoto.specs.push(spec);
-    }
+    // addSpec(spec) {
+    //   this.newPhoto.specs.push(spec);
+    // }
 
     submit() {
-      // this.uploader.onBuildItemForm = (item, form) => {
+      //this.uploader.onBuildItemForm = (item, form) => {
       //   form.append('email', this.newPhoto.email);
       //   form.append('adresse', JSON.stringify(this.newPhoto.coordinates));
       //   form.append('vitesse', this.newPhoto.speed);
@@ -96,8 +102,8 @@ myAutocomplete: google.maps.places.Autocomplete;
 
     updateProfile() {
       this.myAuthServ.postSubmit(this.newPhoto)
-      .then((response: User) => {
-        this.myRouterServ.navigateByUrl(`/photo/${response._id}`)
+      .then(() => {
+        this.myRouterServ.navigateByUrl("/reglage");
       })
       .catch((err) => {
         alert("Erreur d'enregistrement");

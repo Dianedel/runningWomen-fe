@@ -1,15 +1,15 @@
 <nav>
     <!-- <div class="left-bar"> -->
     <img src="../assets/img/img-loren.svg" alt="mon compte" input type="button" routerLink="/reglage" class="moncompte" />
-<!-- </div> -->
-<div class="main-bar">
-    <p class="bonjour">Bonjour {{myAuthServ.currentUser.firstName}}</p>
-    <a type="button" (click)="logoutClick()">Se déconnecter</a>
-</div>
-<div class="right-bar">
-    <img src="../assets/img/search-2.svg" alt="search" input type="button" routerLink="/map" class="iconsearch" />
-    <img src="../assets/img/home-1.svg" alt="home" input type="button" routerLink="/reglage" class="iconhome" />
-</div>
+    <!-- </div> -->
+    <div class="main-bar">
+        <p class="bonjour">Bonjour {{myAuthServ.currentUser.firstName}}</p>
+        <a type="button" (click)="logoutClick()">Se déconnecter</a>
+    </div>
+    <div class="right-bar">
+        <img src="../assets/img/search-2.svg" alt="search" input type="button" routerLink="/map" class="iconsearch" />
+        <img src="../assets/img/home-1.svg" alt="home" input type="button" routerLink="/reglage" class="iconhome" />
+    </div>
 </nav>
 
 <div class="milieu">
@@ -22,12 +22,18 @@
         <p>{{oneMail.content}}</p>
     </div>
 
-    <div class="boutons">
-        <button class="repondre" value="Répondre">Répondre</button>
-        <button class="delete" (click)="deleteClick()" value="Supprimer">Supprimer</button>
-    </div>
+    <form  (ngSubmit)="sendSubmit()">
+<!-- <input [(ngModel)]="newMessage.sender" name="sender" value={{myAuthServ.currentUser._id}} hidden="hidden"> -->
+        <input [(ngModel)]="newMessage.content" name="content" type="text" class="texte" placeholder="Tapez votre message ici">
+        <!-- <div class="boutons"> -->
+
+            <button type="submit"  >Répondre</button>
+    </form>
+    <button class="delete" (click)="deleteClick()" value="Supprimer">Supprimer</button>
+    <!-- </div> -->
 
 </div>
+
 
 <footer>
     <p class="fin">Made with ENERGY @ Ironhack Paris</p>

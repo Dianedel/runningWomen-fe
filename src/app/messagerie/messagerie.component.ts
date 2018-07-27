@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Mail, MailService } from '../api/mail.service';
-import { Router } from '@angular/router';
-import { AuthService } from '../api/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService, User, MessageSubmission } from '../api/auth.service';
 
 @Component({
   selector: 'app-messagerie',
@@ -9,16 +9,22 @@ import { AuthService } from '../api/auth.service';
   styleUrls: ['./messagerie.component.scss']
 })
 export class MessagerieComponent implements OnInit {
+  newMessage: MessageSubmission = new MessageSubmission();
   mailbox: Array<Mail>;
+  id: string;
 
   constructor(
     public myAuthServ: AuthService,
     private myMailServ: MailService,
     private myRouterServ: Router,
+    private myActivated: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.fetchMessagerieDetails();
+    this.myActivated.paramMap.subscribe((params) => {
+      this.id = params.get("id");
+      this.fetchMessagerieDetails();
+    });
   }
 
 
@@ -58,4 +64,27 @@ export class MessagerieComponent implements OnInit {
       })
     }
   }
+
+  submitForm(myForm) {
+    console.log(myForm);
+  }
+
+  sendSubmit() {
+   // console.log(this.newMessage)
+    // pass the form inputs to the service
+    this.newMessage.receiver = this.id;
+    this.myAuthServ.postMessage(this.newMessage)
+    .then((response: AuthService) => {
+      // redirect away to the "mon compte" page
+      this.fetchMessagerieDetails();
+    })
+    .catch((err) => {
+      alert("Erreur lors de l'envoi du message.");
+      console.log(err);
+    });
+  }
+
+
+
+
 }

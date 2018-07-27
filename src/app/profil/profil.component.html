@@ -1,14 +1,20 @@
 <nav>
   <img src="../assets/img/img-loren.svg" alt="mon compte" input type="button" routerLink="/reglage" class="moncompte" />
   <div class="one">
-    <p>Bonjour {{myAuthServ.currentUser?.firstName}}</p>
+    <p class="bonjour">Bonjour {{myAuthServ.currentUser?.firstName}}</p>
     <a type="button" (click)="logoutClick()">Se déconnecter</a>
   </div>
   <div class="two">
     <img src="../assets/img/search-2.svg" alt="search" input type="button" routerLink="/map" class="iconsearch" />
     <img src="../assets/img/email-2.svg" alt="mail" input type="button" routerLink="/mail" class="iconmail" />
+    <img src="../assets/img/home-1.svg" alt="home" input type="button" routerLink="/reglage" class="iconhome" />
   </div>
 </nav>
+
+<!-- function age(la_date)
+{
+    return Math.floor( (new Date).getTime()-la_gate.getTime()) / (365.24*24*3600*1000) );
+} -->
 
 <div class="milieu">
 
@@ -17,7 +23,8 @@
     <img src="../assets/img/img-jenny.svg" alt="photo" />
 
     <p class="name">{{userItem?.firstName}} {{userItem?.lastName}}</p>
-    <p class="ageVille">{{userItem?.birthday}} ans, {{userItem?.location}}</p>
+    <p class="ageVille">{{getAge(userItem?.birthday)}} ans</p>
+    <p class="ageVille">{{userItem?.location}}</p>
   </div>
 
   <div class="right-bar">
@@ -37,12 +44,12 @@
         <img src="../assets/img/calendar-2.svg" alt="planning" />
         <p>{{userItem?.availability}}</p>
       </div>
-      <div class="item4">
+      <!-- <div class="item4">
         <img src="../assets/img/watch-2.svg" alt="flexibility" />
         <p>{{userItem?.flexibility}}</p>
-      </div>
+      </div> -->
       <div class="item5">
-        <input type="submit" class="send" [routerLink]="['/mail', 999 ]" value="Envoyer un message" />
+        <input type="submit" class="send" [routerLink]="['/mail', id ]" value="Envoyer un message" />
       </div>
     </span>
   </div>

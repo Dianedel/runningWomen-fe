@@ -19,6 +19,7 @@ export class GooglemapsComponent implements OnInit {
   myAutocomplete: google.maps.places.Autocomplete;
   latitude: number;
   longitude: number;
+  zoom: number;
   @ViewChild('address') addressElement: any;
 
 
@@ -44,6 +45,7 @@ export class GooglemapsComponent implements OnInit {
         this.latitude = lat;
         this.longitude = lng;
         this.setCenter();
+        this.zoom = 15;
       })
       .catch(() => {
         alert("Gmaps n'arrive pas à se centrer sur votre position")

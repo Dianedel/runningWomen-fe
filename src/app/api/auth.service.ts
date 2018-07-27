@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from "../../environments/environment";
+import { sendRequest } from 'selenium-webdriver/http';
 const { backendUrl } = environment;
 
 
@@ -34,7 +35,12 @@ postSubmit(userInfo: UserSubmission){
     userInfo,
     { withCredentials: true },
   )
-  .toPromise();
+  .toPromise()
+  .then((response: User) => {
+    // update "currentUser" if we log in successfully
+    this.currentUser = response;
+    return response;
+  });
 }
 
 
@@ -83,6 +89,18 @@ postSubmit(userInfo: UserSubmission){
       this.currentUser = response.userDoc;
       return response;
     });
+  }
+
+  // POST Message
+
+  postMessage(newMessage : MessageSubmission){
+   // console.log(this.currentUser)
+  console.log(newMessage)
+
+   return this.myHttpServ.post(`${backendUrl}/api/mailbox`,newMessage,
+    { withCredentials: true } ).toPromise().then((response: any)=>{
+       return response
+    })
   }
 
   // DELETE /api/logout
@@ -137,5 +155,19 @@ export class UserSubmission {
   speed: number;
   availability: string;
   description: string;
+  // specs: [string];
+
+  constructor (options: any = {}) {
+    this.location = options.location;
+    this.speed = options.speed;
+    this.availability = options.availability;
+    this.description = options.description;
+  }
+}
+
+export class MessageSubmission {
+  sender: string;
+  receiver: string;
+ content: string;
   // specs: [string];
 }

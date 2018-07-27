@@ -47,7 +47,7 @@ submitForm(myForm) {
     this.myAuthServ.postSignup(this.signupForm)
     .then((response) => {
       // redirect away to the "mon compte" page
-      this.myRouterServ.navigateByUrl("/reglage");
+      this.myRouterServ.navigateByUrl("/map");
     })
     .catch((err) => {
       alert("Souci d'inscription.");

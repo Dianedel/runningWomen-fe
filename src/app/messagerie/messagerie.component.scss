@@ -52,7 +52,7 @@ nav {
   }
 
   .milieu {
-    height: 482px;
+    height: 512px;
     background-color: #fafafa;
     padding-left: 205px
 }
@@ -60,7 +60,7 @@ nav {
 h2{
     color: #ff6670;
     margin-left: 90px;
-    margin-top: 45px;
+    margin-top: 15px;
 }
 
 .mail{
@@ -69,12 +69,25 @@ h2{
     border-radius: 24px;
     border: solid 1px #3DC7CC;
     margin-left: 90px;
-    margin-top: 35px;
+    margin-top: 18px;
 }
+
+.texte{
+    width: 700px;
+    height: 70px;
+    border-radius: 24px;
+    border: solid 1px #FF6670;
+    margin-left: 90px;
+    margin-top: 18px;
+}
+
+input::placeholder {
+    color: #9b9b9b;
+  }
 
 .boutons{
     margin-left: 515px;
-    margin-top: 25px;
+    margin-top: 0px;
 }
 
 .repondre{
@@ -109,4 +122,6 @@ h2{
     width: 129px;
     margin-right: 2%;
     margin-top: 2%;
+    margin-left: 791px;
+    margin-top: 0px;
 }

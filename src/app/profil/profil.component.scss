@@ -2,7 +2,7 @@ nav {
     background-color: #ff6670;
     color: #fafafa;
     text-align: start;
-    padding-left: 1%;
+    padding-left: 3%;
     margin: 0;
     font-weight: bold;
     height: 70px;
@@ -21,11 +21,32 @@ nav {
 }
 
 .two{
+    order: 2;
     float: left;
     height: 390px;
     padding-top: 10px;
     width: 30%;
 }
+
+.moncompte{
+    width: 105px;
+    padding-left: 160px;
+  }
+
+  .bonjour{
+    margin-top: 14px;
+    margin-bottom: 7px;
+  }
+
+  .iconmail{
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+  }
+
+  // .iconhome{
+
+  // }
 
   .milieu {
       height: 527px;

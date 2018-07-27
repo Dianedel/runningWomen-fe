@@ -12,6 +12,12 @@ nav {
   clear: both;
 }
 
+
+input::placeholder {
+  color: #9b9b9b;
+}
+
+
 .close {
   width: 30px;
   height: 65px;

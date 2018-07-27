@@ -48,5 +48,13 @@ fetchUserProfil() {
     })
   }
 
+  getAge(birth) {
+    const ageMS = Date.parse(Date()) - Date.parse(birth);
+    const age = new Date();
+    console.log(birth, ageMS)
+    age.setTime(ageMS);
+    const ageYear = age.getFullYear() - 1970;
 
+    return ageYear;
+  }
 }

@@ -9,6 +9,7 @@ import { AuthService } from './api/auth.service';
 })
 export class AppComponent {
   title = 'Running Women 🏃‍';
+
   constructor(
     public myAuthServ: AuthService
   ) { }
